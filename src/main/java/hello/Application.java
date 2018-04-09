@@ -1,5 +1,7 @@
 package hello;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,20 +16,41 @@ import java.util.Arrays;
 @RestController
 public class Application {
 
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
 //    @Bean
-//    public CommandLineRunner commandLineRunner(ApplicationContext context) {
+//    public CommandLineRunner commandLineRunner(UserRepository repository) {
 //        return args -> {
-//            System.out.println("Let's go!");
 //
-//            String[] beans = context.getBeanDefinitionNames();
-//            Arrays.sort(beans);
-//            for (String name : beans) {
-//                System.out.println(name);
+//            repository.save(new User("Jack", "Bauer"));
+//            repository.save(new User("Chloe", "O'Brian"));
+//            repository.save(new User("Kim", "Bauer"));
+//            repository.save(new User("David", "Palmer"));
+//            repository.save(new User("Michelle", "Dessler"));
+//
+//            log.info("findAll");
+//            for (User u : repository.findAll()) {
+//                log.info(u.toString());
 //            }
+//
+//            log.info("findById(1L)");
+//            repository.findById(1L).ifPresent(
+//                    user -> {
+//                        log.info(user.toString());
+//                    }
+//            );
+//
+//            log.info("findbyname(Bauer)");
+//            repository.findByLastName("Bauer").forEach(
+//                    user -> {
+//                        log.info(user.toString());
+//                    }
+//            );
+//
 //        };
 //    }
 }
