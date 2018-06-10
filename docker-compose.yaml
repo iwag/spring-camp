@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  dev-postgres5.6:
+    image: postgres:9.6
+    ports:
+      - "55432:5432"
+    volumes:
+      - ./api:/api
+      - ./Schema:/schema
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: playerdata_dev
+  dev-redis5.6:
+    ports:
+      - "56379:6379"
+    image: redis:3.2
+  phppgadmin:
+    image: dockage/phppgadmin
+    environment:
+      PHP_PG_ADMIN_SERVER_HOST: dev-postgres5.6
+    ports:
+      - "8880:80"
+    depends_on:
+      - dev-postgres5.6
+  phpredisadmin:
+    image: faktiva/php-redis-admin
+    environment:
+       PHPREDMIN_DATABASE_REDIS_0_HOST: dev-redis5.6
+    ports:
+      - "8881:80"
+    depends_on:
+      - dev-redis5.6
+#  spring-server:
+#    build: .
+#    ports:
+#      - "8080:80"
+#    depends_on:
+#      - dev-postgres5.6
+#      - dev-redis5.6
+
