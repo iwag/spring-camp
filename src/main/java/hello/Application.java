@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -18,6 +19,7 @@ import java.util.concurrent.Executor;
 
 @SpringBootApplication
 @RestController
+@ImportResource("classpath:config/datasource.xml")
 public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
@@ -58,4 +60,6 @@ public class Application {
 //
 //        };
 //    }
+
+
 }
