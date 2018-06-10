@@ -19,7 +19,6 @@ import java.util.concurrent.Executor;
 
 @SpringBootApplication
 @RestController
-@ImportResource("classpath:config/datasource.xml")
 public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
