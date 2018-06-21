@@ -10,17 +10,6 @@ spring:
     host: localhost
 
 spring:
-  data:
-    jpa:
-      repositories:
-        enabled: true
-  h2:
-    console:
-      enabled: true
-  jpa:
-    open-in-view: true
-
-spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driverClassName: org.h2.Driver
