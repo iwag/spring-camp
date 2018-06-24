@@ -8,11 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import hello.repository.KusaRecordResository;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.validation.Valid;
-import java.util.Map;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class KusaController {
@@ -29,6 +25,12 @@ public class KusaController {
     public String greetingSubmit(@ModelAttribute KusaRecord kusaRecord) {
         this.kusaResository.save(kusaRecord);
         return "redirect:/kusas/" + kusaRecord.getId();
+    }
+
+    @RequestMapping("/kusas/{id}")
+    public String showOwner(@PathVariable("id") int kusaId, Model model) {
+        model.addAttribute("kusa", this.kusaResository.findById(kusaId));
+        return "kusa";
     }
 
 }
