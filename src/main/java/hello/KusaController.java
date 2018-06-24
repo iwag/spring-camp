@@ -30,7 +30,7 @@ public class KusaController {
     @RequestMapping("/kusas/{id}")
     public String showOwner(@PathVariable("id") int kusaId, Model model) {
         model.addAttribute("kusa", this.kusaResository.findById(kusaId));
-        return "kusa";
+        return "kusa_id";
     }
 
 }
