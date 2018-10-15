@@ -21,7 +21,6 @@ public class KusaRecord {
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
     private User user;
 
     public Integer getId() {
